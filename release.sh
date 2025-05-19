@@ -44,7 +44,7 @@ echo "New version will be: $new_version"
 # Create a GitHub release using the GitHub CLI.
 # This command will create a new tag (if it doesn't exist) from the current branch head,
 # generate release notes automatically, and publish the release.
-gh release create "$new_version" --generate-notes --target main
+gh release create "$new_version" --generate-notes --target $(git rev-parse HEAD)
 
 if [ $? -eq 0 ]; then
   echo "GitHub release $new_version created successfully."
